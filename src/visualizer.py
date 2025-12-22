@@ -31,4 +31,3 @@ class Visualizer:
         plt.ylabel("Средний балл")
         plt.savefig(f"{self.output_dir}/correlation.png")
         plt.close()
-
