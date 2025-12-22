@@ -55,4 +55,3 @@ class LearningAnalyzer:
         at_risk = stats[stats["avg_score"] < score_threshold]
         logger.info(f"Найдено {len(at_risk)} студентов в группе риска")
         return at_risk
-
