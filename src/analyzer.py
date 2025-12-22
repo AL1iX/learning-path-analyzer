@@ -56,4 +56,3 @@ class LearningAnalyzer:
         logger.info(f"Найдено {len(at_risk)} студентов в группе риска")
         return at_risk
 
-
