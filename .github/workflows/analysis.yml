@@ -1,0 +1,54 @@
+name: Анализ пути обучения
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  schedule:
+    - cron: "0 0 * * *" # Ежедневный запуск
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Настройка Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Установка зависимостей
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Проверка стиля (flake8)
+        run: |
+          flake8 src tests
+
+      - name: Проверка форматирования (black)
+        run: |
+          black --check src tests
+
+      - name: Проверка сортировки импортов (isort)
+        run: |
+          isort --check-only src tests
+
+      - name: Запуск тестов
+        run: |
+          pytest --cov=src --cov-report=term
+
+      - name: Запуск анализа
+        run: |
+          python -m src.main --output report_output
+
+      - name: Архивация отчетов
+        uses: actions/upload-artifact@v3
+        with:
+          name: analysis-report
+          path: report_output/
+
+
