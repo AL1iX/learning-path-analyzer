@@ -47,4 +47,3 @@ def test_at_risk(sample_csv):
     assert 3 in risky.index
     assert 1 not in risky.index
 
-
