@@ -5,12 +5,12 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+RUN useradd -m appuser
 
-# Создаем папку для вывода графиков
-RUN mkdir -p output
+COPY . .
+RUN chown -R appuser:appuser /app
+
+USER appuser
 
 ENTRYPOINT ["python", "-m", "src.main"]
 CMD ["--data", "data/lms_logs.csv"]
-
-

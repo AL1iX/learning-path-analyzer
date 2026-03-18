@@ -13,7 +13,7 @@
 - **Аналитика:** Расчет корреляции между активностью и оценками.
 - **Risk Detection:** Автоматическое выявление отстающих студентов.
 - **Визуализация:** Генерация графиков успеваемости и активности.
-- **CI/CD:** Ежедневный автоматический анализ данных.
+- **CI/CD:** Автоматическое тестирование и анализ данных при каждом пуше.
 
 ## 🛠️ Установка
 
@@ -22,7 +22,7 @@
 1. Клонируйте репозиторий:
 
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/AL1iX/learning-path-analyzer.git
    cd learning-path-analyzer
    ```
 
@@ -116,6 +116,7 @@ docker run --rm -v ${PWD}/output:/app/output lms-analyzer
 
 ```
 learning-path-analyzer/
+├── .dockerignore         # Исключения для Docker-образа
 ├── .flake8               # Настройки flake8
 ├── .github/workflows/    # CI/CD конфигурация
 ├── .gitignore            # Исключения для git (кэш, артефакты и т.п.)
@@ -147,7 +148,7 @@ learning-path-analyzer/
 Проект использует **GitHub Actions** для:
 
 1. Автоматического тестирования и проверок качества кода (Pytest, Flake8, Black, isort).
-2. Ежедневного запуска анализа данных (Scheduled Workflow).
+2. Запуска анализа данных при каждом push/PR.
 3. Сохранения отчетов и графиков в Artifacts.
 
 Где смотреть результаты:

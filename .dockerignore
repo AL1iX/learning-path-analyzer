@@ -1,0 +1,15 @@
+.git/
+.vs/
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+output/
+report_output/
+venv/
+env/
+.env
+.coverage
+htmlcov/
+*.egg-info/
+.DS_Store
